@@ -1,0 +1,7 @@
+This is a set of scripts and stylesheets written to automated downloading raw statistic numbers from Google Analytics and then converting them to the amCharts format. Google provides greate API for data export, so we could login and donload the data with two simple bash-scripts. All the work with converting one XML to another is done by the xsltproc. Those tools (bash and xsltproc) are installed on almost all unix systems out there, so you will have to do nothing to get it up and running.
+
+You can use it with cron to disable yourself from updating stats manually every time. We use this crontab file:
+0 0 * * 3 cd /www/inshaker/analytic && ./login.sh >/dev/null
+0 6 * * * cd /www/inshaker/analytic && ./update.sh >/dev/null
+
+As you can see from the crontab we are using it on the Inhsaker (http://www.inshaker.ru/about.html#view-stat).
