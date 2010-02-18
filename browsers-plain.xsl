@@ -10,14 +10,6 @@
 	</slice>
 	
 	
-	<xsl:variable name="opera_mini" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Opera Mini']"/>
-	<xsl:variable name="opera_mini_sum" select="sum($opera_mini/dxp:metric[@name='ga:visits']/@value)"/>
-	
-	<slice title="Opera Mini" color="#cc5533">
-		<xsl:value-of select="$opera_mini_sum"/>
-	</slice>
-	
-	
 	<xsl:variable name="firefox" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Firefox']"/>
 	<xsl:variable name="firefox_sum" select="sum($firefox/dxp:metric[@name='ga:visits']/@value)"/>
 	<slice title="Firefox" color="#ff9900">
@@ -46,10 +38,9 @@
 	</slice>
 	
 	
-	
 	<slice title="остальные" color="#999999">
 		<xsl:variable name="total" select="a:feed/dxp:aggregates/dxp:metric[@name='ga:visits']/@value"/>
-		<xsl:value-of select="$total - $opera_sum - $opera_mini_sum - $firefox_sum - $explorer_sum - $safari_sum - $chrome_sum"/>
+		<xsl:value-of select="$total - $opera_sum - $firefox_sum - $explorer_sum - $safari_sum - $chrome_sum"/>
 	</slice>
 </pie>
 </xsl:template>
