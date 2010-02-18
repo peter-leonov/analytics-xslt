@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ONLINE=yes
 PERIOD=90
 
 PROFILE_ID=9038802
@@ -8,6 +9,11 @@ VISITS_XML=$STAT_DIR/visitors/data.xml
 CITIES_XML=$STAT_DIR/cities/data.xml
 BROWSERS_XML=$STAT_DIR/browsers/data.xml
 BROWSERS_PLAIN_XML=$STAT_DIR/browsers-plain/data.xml
+
+if [[ $1 = "offline" ]]; then
+	echo "Working offline"
+	ONLINE=""
+fi
 
 # dates
 
@@ -47,15 +53,17 @@ AUTH_TOKEN=$(cat data/auth_token.txt)
 report (){
 	echo "reporting $1"
 	FEED_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&$2&start-date=$START_DATE&end-date=$END_DATE&max-results=$3&prettyprint=true"
-	rm -f $1.xml
-	echo "  downloading..."
-	mkdir -p data
-	curl "$FEED_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > data/$1.xml
+	if [[ ONLINE = "yes" ]]; then
+		rm -f $1.xml
+		echo "  downloading..."
+		mkdir -p data
+		curl "$FEED_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > data/$1.xml
+	fi
 	if cat data/$1.xml | grep "<?xml" >/dev/null; then
 		echo "  processing..."
 		xsltproc $1.xsl data/$1.xml > $4
 	else
-		echo "ERROR: Failed downloading $1.xml" 1>&2
+		echo "ERROR: file has a wrong format or does not exist \"$1.xml\"" 1>&2
 	fi
 }
 
