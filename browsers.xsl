@@ -53,17 +53,22 @@
 	
 	
 	<xsl:variable name="firefox" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Firefox']"/>
+	<xsl:variable name="firefox_4_0" select="$firefox[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '4.0']"/>
 	<xsl:variable name="firefox_3_6" select="$firefox[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '3.6']"/>
 	<xsl:variable name="firefox_3_5" select="$firefox[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '3.5']"/>
 	<xsl:variable name="firefox_3_0" select="$firefox[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '3.0']"/>
 	<xsl:variable name="firefox_2_0" select="$firefox[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '2.0']"/>
 	
 	<xsl:variable name="firefox_sum" select="sum($firefox/dxp:metric[@name='ga:visits']/@value)"/>
+	<xsl:variable name="firefox_4_0_sum" select="sum($firefox_4_0/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="firefox_3_6_sum" select="sum($firefox_3_6/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="firefox_3_5_sum" select="sum($firefox_3_5/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="firefox_3_0_sum" select="sum($firefox_3_0/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="firefox_2_0_sum" select="sum($firefox_2_0/dxp:metric[@name='ga:visits']/@value)"/>
 	
+	<slice title="Firefox 4.0" color="#ff9900">
+		<xsl:value-of select="$firefox_4_0_sum"/>
+	</slice>
 	<slice title="Firefox 3.6" color="#ff9900">
 		<xsl:value-of select="$firefox_3_6_sum"/>
 	</slice>
@@ -77,7 +82,7 @@
 		<xsl:value-of select="$firefox_2_0_sum"/>
 	</slice>
 	<slice title="другие лисы" color="#ffdd44">
-		<xsl:value-of select="$firefox_sum - $firefox_3_6_sum - $firefox_3_5_sum - $firefox_3_0_sum - $firefox_2_0_sum"/>
+		<xsl:value-of select="$firefox_sum - $firefox_4_0_sum - $firefox_3_6_sum - $firefox_3_5_sum - $firefox_3_0_sum - $firefox_2_0_sum"/>
 	</slice>
 	
 	
