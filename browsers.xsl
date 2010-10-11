@@ -47,7 +47,7 @@
 	<slice title="Opera 9.2" color="#cc9977">
 		<xsl:value-of select="$opera_9_2_sum"/>
 	</slice>
-	<slice title="другие оперы" color="#ccaa88">
+	<slice title="other Opera" color="#ccaa88">
 		<xsl:value-of select="$opera_sum - $opera_10_7_sum - $opera_10_6_sum - $opera_10_5_sum - $opera_10_1_sum - $opera_10_0_sum - $opera_9_6_sum - $opera_9_5_sum - $opera_9_2_sum"/>
 	</slice>
 	
@@ -76,7 +76,7 @@
 	<slice title="Firefox 3.0" color="#ffcc33">
 		<xsl:value-of select="$firefox_3_0_sum"/>
 	</slice>
-	<slice title="другие лисы" color="#ffdd44">
+	<slice title="other Firefox" color="#ffdd44">
 		<xsl:value-of select="$firefox_sum - $firefox_4_0_sum - $firefox_3_6_sum - $firefox_3_5_sum - $firefox_3_0_sum"/>
 	</slice>
 	
@@ -105,7 +105,7 @@
 	<slice title="Explorer 6" color="#66bbff">
 		<xsl:value-of select="$explorer_6_sum"/>
 	</slice>
-	<slice title="другие эксплореры" color="#77ccff">
+	<slice title="other Explorer" color="#77ccff">
 		<xsl:value-of select="$explorer_sum - $explorer_9_sum - $explorer_8_sum - $explorer_7_sum - $explorer_6_sum"/>
 	</slice>
 	
@@ -129,7 +129,7 @@
 	<slice title="Chrome 5" color="#aacc66">
 		<xsl:value-of select="$chrome_5_sum"/>
 	</slice>
-	<slice title="другие хромы" color="#cccc88">
+	<slice title="other Chrome" color="#cccc88">
 		<xsl:value-of select="$chrome_sum - $chrome_7_sum - $chrome_6_sum - $chrome_5_sum"/>
 	</slice>
 	
@@ -149,7 +149,7 @@
 		<xsl:value-of select="$opera_mini_sum"/>
 	</slice>
 	
-	<slice title="остальные" color="#999999">
+	<slice title="others" color="#999999">
 		<xsl:variable name="total" select="a:feed/dxp:aggregates/dxp:metric[@name='ga:visits']/@value"/>
 		<xsl:value-of select="$total - $opera_sum - $opera_mini_sum - $firefox_sum - $explorer_sum - $safari_sum - $chrome_sum"/>
 	</slice>
