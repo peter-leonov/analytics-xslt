@@ -123,13 +123,13 @@
 	<slice title="Chrome 7" color="#66cc22">
 		<xsl:value-of select="$chrome_7_sum"/>
 	</slice>
-	<slice title="Chrome 6" color="#66cc22">
+	<slice title="Chrome 6" color="#88cc44">
 		<xsl:value-of select="$chrome_6_sum"/>
 	</slice>
-	<slice title="Chrome 5" color="#66cc22">
+	<slice title="Chrome 5" color="#aacc66">
 		<xsl:value-of select="$chrome_5_sum"/>
 	</slice>
-	<slice title="другие хромы" color="#ccccaa">
+	<slice title="другие хромы" color="#cccc88">
 		<xsl:value-of select="$chrome_sum - $chrome_7_sum - $chrome_6_sum - $chrome_5_sum"/>
 	</slice>
 	
