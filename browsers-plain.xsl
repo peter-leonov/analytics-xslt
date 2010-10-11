@@ -24,17 +24,17 @@
 	</slice>
 	
 	
-	<xsl:variable name="safari" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Safari']"/>
-	<xsl:variable name="safari_sum" select="sum($safari/dxp:metric[@name='ga:visits']/@value)"/>
-	<slice title="Safari" color="#66ddff">
-		<xsl:value-of select="$safari_sum"/>
-	</slice>
-	
-	
 	<xsl:variable name="chrome" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Chrome']"/>
 	<xsl:variable name="chrome_sum" select="sum($chrome/dxp:metric[@name='ga:visits']/@value)"/>
 	<slice title="Chrome" color="#66cc22">
 		<xsl:value-of select="$chrome_sum"/>
+	</slice>
+	
+	
+	<xsl:variable name="safari" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Safari']"/>
+	<xsl:variable name="safari_sum" select="sum($safari/dxp:metric[@name='ga:visits']/@value)"/>
+	<slice title="Safari" color="#dd1188">
+		<xsl:value-of select="$safari_sum"/>
 	</slice>
 	
 	
