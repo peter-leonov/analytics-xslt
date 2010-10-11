@@ -67,13 +67,13 @@
 	<slice title="Firefox 4.0" color="#ff9900">
 		<xsl:value-of select="$firefox_4_0_sum"/>
 	</slice>
-	<slice title="Firefox 3.6" color="#ff9900">
+	<slice title="Firefox 3.6" color="#ffaa11">
 		<xsl:value-of select="$firefox_3_6_sum"/>
 	</slice>
-	<slice title="Firefox 3.5" color="#ffaa11">
+	<slice title="Firefox 3.5" color="#ffbb22">
 		<xsl:value-of select="$firefox_3_5_sum"/>
 	</slice>
-	<slice title="Firefox 3.0" color="#ffbb22">
+	<slice title="Firefox 3.0" color="#ffcc33">
 		<xsl:value-of select="$firefox_3_0_sum"/>
 	</slice>
 	<slice title="другие лисы" color="#ffdd44">
