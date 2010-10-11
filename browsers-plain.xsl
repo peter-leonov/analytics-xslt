@@ -33,7 +33,7 @@
 	
 	<xsl:variable name="safari" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Safari']"/>
 	<xsl:variable name="safari_sum" select="sum($safari/dxp:metric[@name='ga:visits']/@value)"/>
-	<slice title="Safari" color="#dd1188">
+	<slice title="Safari" color="#4422cc">
 		<xsl:value-of select="$safari_sum"/>
 	</slice>
 	
