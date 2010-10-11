@@ -29,25 +29,25 @@
 	<slice title="Opera 10.6" color="#cc2200" label_radius="70">
 		<xsl:value-of select="$opera_10_6_sum"/>
 	</slice>
-	<slice title="Opera 10.5" color="#cc2200" label_radius="70">
+	<slice title="Opera 10.5" color="#cc4422" label_radius="70">
 		<xsl:value-of select="$opera_10_5_sum"/>
 	</slice>
-	<slice title="Opera 10.1" color="#cc2200">
+	<slice title="Opera 10.1" color="#cc5533">
 		<xsl:value-of select="$opera_10_1_sum"/>
 	</slice>
-	<slice title="Opera 10.0" color="#cc2200">
+	<slice title="Opera 10.0" color="#cc6644">
 		<xsl:value-of select="$opera_10_0_sum"/>
 	</slice>
-	<slice title="Opera 9.6" color="#cc4422">
+	<slice title="Opera 9.6" color="#cc7755">
 		<xsl:value-of select="$opera_9_6_sum"/>
 	</slice>
-	<slice title="Opera 9.5" color="#cc5533">
+	<slice title="Opera 9.5" color="#cc8866">
 		<xsl:value-of select="$opera_9_5_sum"/>
 	</slice>
-	<slice title="Opera 9.2" color="#cc6644">
+	<slice title="Opera 9.2" color="#cc9977">
 		<xsl:value-of select="$opera_9_2_sum"/>
 	</slice>
-	<slice title="другие оперы" color="#cc7755">
+	<slice title="другие оперы" color="#ccaa88">
 		<xsl:value-of select="$opera_sum - $opera_10_7_sum - $opera_10_6_sum - $opera_10_5_sum - $opera_10_1_sum - $opera_10_0_sum - $opera_9_6_sum - $opera_9_5_sum - $opera_9_2_sum"/>
 	</slice>
 	
