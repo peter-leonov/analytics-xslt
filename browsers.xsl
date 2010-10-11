@@ -82,15 +82,20 @@
 	
 	
 	<xsl:variable name="explorer" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Internet Explorer']"/>
+	<xsl:variable name="explorer_9" select="$explorer[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '9.0']"/>
 	<xsl:variable name="explorer_8" select="$explorer[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '8.0']"/>
 	<xsl:variable name="explorer_7" select="$explorer[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '7.0']"/>
 	<xsl:variable name="explorer_6" select="$explorer[substring(dxp:dimension[@name='ga:browserVersion']/@value, 1, 3) = '6.0']"/>
 	
 	<xsl:variable name="explorer_sum" select="sum($explorer/dxp:metric[@name='ga:visits']/@value)"/>
+	<xsl:variable name="explorer_9_sum" select="sum($explorer_9/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="explorer_8_sum" select="sum($explorer_8/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="explorer_7_sum" select="sum($explorer_7/dxp:metric[@name='ga:visits']/@value)"/>
 	<xsl:variable name="explorer_6_sum" select="sum($explorer_6/dxp:metric[@name='ga:visits']/@value)"/>
 	
+	<slice title="Explorer 9" color="#4499ff">
+		<xsl:value-of select="$explorer_9_sum"/>
+	</slice>
 	<slice title="Explorer 8" color="#4499ff">
 		<xsl:value-of select="$explorer_8_sum"/>
 	</slice>
@@ -101,7 +106,7 @@
 		<xsl:value-of select="$explorer_6_sum"/>
 	</slice>
 	<slice title="другие эксплореры" color="#77ccff">
-		<xsl:value-of select="$explorer_sum - $explorer_8_sum - $explorer_7_sum - $explorer_6_sum"/>
+		<xsl:value-of select="$explorer_sum - $explorer_9_sum - $explorer_8_sum - $explorer_7_sum - $explorer_6_sum"/>
 	</slice>
 	
 	
