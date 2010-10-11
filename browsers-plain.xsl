@@ -17,17 +17,17 @@
 	</slice>
 	
 	
-	<xsl:variable name="explorer" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Internet Explorer']"/>
-	<xsl:variable name="explorer_sum" select="sum($explorer/dxp:metric[@name='ga:visits']/@value)"/>
-	<slice title="Explorer" color="#4499ff">
-		<xsl:value-of select="$explorer_sum"/>
-	</slice>
-	
-	
 	<xsl:variable name="chrome" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Chrome']"/>
 	<xsl:variable name="chrome_sum" select="sum($chrome/dxp:metric[@name='ga:visits']/@value)"/>
 	<slice title="Chrome" color="#66cc22">
 		<xsl:value-of select="$chrome_sum"/>
+	</slice>
+	
+	
+	<xsl:variable name="explorer" select="a:feed/a:entry[dxp:dimension[@name='ga:browser']/@value = 'Internet Explorer']"/>
+	<xsl:variable name="explorer_sum" select="sum($explorer/dxp:metric[@name='ga:visits']/@value)"/>
+	<slice title="Explorer" color="#4499ff">
+		<xsl:value-of select="$explorer_sum"/>
 	</slice>
 	
 	
