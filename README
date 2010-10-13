@@ -4,4 +4,4 @@ You can use it with cron to disable yourself from updating stats manually every 
 0 0 * * 3 cd /www/inshaker/analytic && ./login.sh >/dev/null
 0 6 * * * cd /www/inshaker/analytic && ./update.sh >/dev/null
 
-As you can see from the crontab we are using it on the Inhsaker (http://www.inshaker.ru/about.html#view-stat).
+As you can see from the crontab we are using it on the Inhsaker (http://www.inshaker.ru/geeks/stats.html).
