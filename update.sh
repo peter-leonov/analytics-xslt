@@ -43,7 +43,7 @@ echo Getting stats from $START_DATE to $END_DATE
 
 if [ ! -f data/auth_token.txt ]; then
 	echo "ERROR: data/auth_token.txt file is missing" 1>&2
-	exit
+	exit 1
 fi
 AUTH_TOKEN=$(cat data/auth_token.txt)
 
