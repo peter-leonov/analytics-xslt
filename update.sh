@@ -1,7 +1,6 @@
 #!/bin/bash
 
 ONLINE="yes"
-PERIOD=90
 
 PROFILE_ID=9038802
 STAT_DIR=/www/inshaker/htdocs/stat
@@ -33,10 +32,6 @@ fi
 NOW=$(date "+%s")
 DAY=$((3600 * 24))
 END=$(($NOW - 2 * $DAY))
-START=$(($END - $PERIOD * $DAY))
-START_DATE=$(stamp2date $START)
-END_DATE=$(stamp2date $END)
-echo Getting stats from $START_DATE to $END_DATE
 
 
 # authorization
@@ -53,10 +48,15 @@ AUTH_TOKEN=$(cat data/auth_token.txt)
 report (){
 	MY_NAME=$1
 	MY_QUERY=$2
-	MY_RESULTS=$3
-	MY_FILE=$4
+	MY_PERIOD=$3
+	MY_RESULTS=$4
+	MY_FILE=$5
 	
-	echo "reporting $MY_NAME"
+	START=$(($END - $MY_PERIOD * $DAY))
+	START_DATE=$(stamp2date $START)
+	END_DATE=$(stamp2date $END)
+	
+	echo "reporting $MY_NAME (from $START_DATE to $END_DATE)"
 	FEED_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&$MY_QUERY&start-date=$START_DATE&end-date=$END_DATE&max-results=$MY_RESULTS&prettyprint=true"
 	if [[ $ONLINE = "yes" ]]; then
 		rm -f $MY_NAME.xml
@@ -72,8 +72,8 @@ report (){
 	fi
 }
 
-report "visits" "dimensions=ga:date&metrics=ga:visits,ga:pageviews" $PERIOD $VISITS_XML
-report "cities" "dimensions=ga:region&metrics=ga:visits&sort=-ga:visits" 4 $CITIES_XML
-report "browsers" "dimensions=ga:browser,ga:browserVersion&metrics=ga:visits&sort=-ga:visits" 2500 $BROWSERS_XML
-report "browsers-plain" "dimensions=ga:browser&metrics=ga:visits&sort=-ga:visits" 6 $BROWSERS_PLAIN_XML
+report "visits" "dimensions=ga:date&metrics=ga:visits,ga:pageviews" 90 90 $VISITS_XML
+report "cities" "dimensions=ga:region&metrics=ga:visits&sort=-ga:visits" 90 4 $CITIES_XML
+report "browsers" "dimensions=ga:browser,ga:browserVersion&metrics=ga:visits&sort=-ga:visits" 90 2500 $BROWSERS_XML
+report "browsers-plain" "dimensions=ga:browser&metrics=ga:visits&sort=-ga:visits" 90 6 $BROWSERS_PLAIN_XML
 # https://www.google.com/analytics/feeds/data?ids=ga:9038802&dimensions=ga:browser&metrics=ga:visits&sort=-ga:visits&start-date=2009-07-23&end-date=2009-10-21&max-results=1000
