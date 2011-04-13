@@ -51,19 +51,24 @@ AUTH_TOKEN=$(cat data/auth_token.txt)
 # reports
 
 report (){
-	echo "reporting $1"
-	FEED_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&$2&start-date=$START_DATE&end-date=$END_DATE&max-results=$3&prettyprint=true"
+	MY_NAME=$1
+	MY_QUERY=$2
+	MY_RESULTS=$3
+	MY_FILE=$4
+	
+	echo "reporting $MY_NAME"
+	FEED_URI="https://www.google.com/analytics/feeds/data?ids=ga:$PROFILE_ID&$MY_QUERY&start-date=$START_DATE&end-date=$END_DATE&max-results=$MY_RESULTS&prettyprint=true"
 	if [[ $ONLINE = "yes" ]]; then
-		rm -f $1.xml
+		rm -f $MY_NAME.xml
 		echo "  downloading..."
 		mkdir -p data
-		curl "$FEED_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > data/$1.xml
+		curl "$FEED_URI" -s --header "Authorization: GoogleLogin Auth=$AUTH_TOKEN" > data/$MY_NAME.xml
 	fi
-	if cat data/$1.xml | grep "<?xml" >/dev/null; then
+	if cat data/$MY_NAME.xml | grep "<?xml" >/dev/null; then
 		echo "  processing..."
-		xsltproc $1.xsl data/$1.xml > $4
+		xsltproc $MY_NAME.xsl data/$MY_NAME.xml > $MY_FILE
 	else
-		echo "ERROR: file has a wrong format or does not exist \"$1.xml\"" 1>&2
+		echo "ERROR: file has a wrong format or does not exist \"$MY_NAME.xml\"" 1>&2
 	fi
 }
 
