@@ -140,16 +140,16 @@
 	<slice title="Explorer 9" color="#4499ff">
 		<xsl:value-of select="$explorer_9_sum"/>
 	</slice>
-	<slice title="Explorer 8" color="#4499ff">
+	<slice title="Explorer 8" color="#55aaff">
 		<xsl:value-of select="$explorer_8_sum"/>
 	</slice>
-	<slice title="Explorer 7" color="#55aaff">
+	<slice title="Explorer 7" color="#66bbff">
 		<xsl:value-of select="$explorer_7_sum"/>
 	</slice>
-	<slice title="Explorer 6" color="#66bbff">
+	<slice title="Explorer 6" color="#77ccff">
 		<xsl:value-of select="$explorer_6_sum"/>
 	</slice>
-	<slice title="other Explorer" color="#77ccff">
+	<slice title="other Explorer" color="#88ddff">
 		<xsl:value-of select="$explorer_sum - $explorer_9_sum - $explorer_8_sum - $explorer_7_sum - $explorer_6_sum"/>
 	</slice>
 	
